@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>12.0</LangVersion>
+    <PackageType>Dependency;BonsaiLibrary</PackageType>
+    <ShouldIncludeNativeSkiaSharp>false</ShouldIncludeNativeSkiaSharp>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bonsai.Core" Version="2.9.0" />
+    <PackageReference Include="Bonsai.ML.Design" Version="0.4.1" />
+    <PackageReference Include="Bonsai.ML.Torch" Version="0.4.1" />
+    <PackageReference Include="Bonsai.Vision.Design" Version="2.9.0" />
+  </ItemGroup>
+
+</Project>
