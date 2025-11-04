@@ -1,0 +1,14 @@
+[project]
+name = "gesture_recognition"
+version = "0.1.0"
+description = "Bonsai package for real-time hand gesture recognition using YOLOv10n trained on HaGRID."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "huggingface-hub[torch]>=1.0.1",
+    "numpy==1.26.4",
+    "ultralytics",
+]
+
+[tool.uv.sources]
+ultralytics = { git = "https://github.com/THU-MIG/yolov10.git" }
