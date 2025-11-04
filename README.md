@@ -5,18 +5,22 @@ Bonsai example of running a YOLOv10n-based hand gesture recognition model for on
 - `weights/` holds the pretrained `YOLOv10n_gestures.pt` checkpoint (from the [HaGRID repo](https://github.com/hukenovs/hagrid)) and the exported TorchScript model consumed by **Bonsai.ML.Torch**.
 - `generate_torchscript_model.py` loads the raw checkpointed weights into a `YOLO` model using the `ultralytics` package, and then registers all custom Ultralytics/Torch modules required to serialize the model. It then exports the loaded model to TorchScript format and places it into the `weights/` folder.
 - `GestureRecognition/` contains a Bonsai package with operators for decoding the models output and overlaying the labels/bounding boxes onto an image.
+- `CustomPackages/` contains custom `.nupkg` files to be used by Bonsai. The Bonsai.ML pre-release packages (v0.4.2-rc.1) from the [Bonsai.ML repo](https://github.com/ncguilbeault/machinelearning/releases/tag/v0.4.2-rc.1) should be placed here.
 - `demo.bonsai` provides a minimal example workflow running online inference to detect hand gestures.
 
 ## Quick Start
-1. **Python**
+1. **Initial Setup**
+	- Download the `YOLOv10n_gestures.pt` weights checkpoint from the [HaGRID repo](https://github.com/hukenovs/hagrid) and place it into the `weights/` folder.
+	- Download the `Bonsai.ML` pre-release packages (v0.4.2-rc.1) from the [Bonsai.ML releases page](https://github.com/ncguilbeault/machinelearning/releases/tag/v0.4.2-rc.1). Place the `.nupkg` files into the `CustomPackages/` folder.
+2. **Python**
     - Ensure uv is installed or Python (v3.12).
 	- Install dependencies with `uv sync` (uv is recommended) or `pip install -e .`.
 	- Generate the TorchScript scripted model from the model checkpoint: `uv run generate_torchscript_model.py`.
-2. **Bonsai package**
+3. **Dotnet**
     - Ensure `dotnet` (v8) is installed.
 	- Build and package the .NET library: `dotnet build -c Release && dotnet pack`.
-	- (Preferred) Bootstrap the provided Bonsai environment with `dotnet new bonsaienvl` or run the `Bonsai` debug command in vs code.
-	- (Alternative) Launch Bonsai's package manager and add the `GestureRecognition/bin/Release` folder to your NuGet sources with the name `GestureRecognition - Local`. Back in the package manager, select the `GestureRecognition - Local` source, and install the `GestureRecognition` package.
+4. **Bonsai**
+	- Bootstrap the provided Bonsai environment. On Windows, you can run `bonsai --no-editor` from the command line in the root folder. On Linux, you can run the `dotnet new bonsaienvl` command from the root folder.
 
 ## General Usage
 - Load the TorchScript model with the `LoadScriptModule` operator.
