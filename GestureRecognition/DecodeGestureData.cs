@@ -16,7 +16,7 @@ namespace GestureRecognition;
 
 [Combinator]
 [WorkflowElementCategory(ElementCategory.Transform)]
-public class GestureData
+public class DecodeGestureData
 {
     public float ConfidenceThreshold { get; set; } = 0.5f;
 
@@ -24,7 +24,7 @@ public class GestureData
     {
         return source.Select(tensor =>
         {
-            if (tensor is null || tensor.NumberOfElements == 0 || tensor.Dimensions != 3 || tensor.size(2) < 6)
+            if (tensor is null || tensor.NumberOfElements == 0 || tensor.Dimensions != 3 || tensor.size(1) != 300 || tensor.size(2) != 6)
                 return [];
 
             var flattenedTensor = tensor.view(-1, tensor.size(2));

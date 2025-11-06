@@ -41,8 +41,8 @@
         <Combinator xsi:type="p1:Forward" />
       </Expression>
       <Expression xsi:type="Combinator">
-        <Combinator xsi:type="gestures:GestureData">
-          <gestures:ConfidenceThreshold>0.6</gestures:ConfidenceThreshold>
+        <Combinator xsi:type="gestures:DecodeGestureData">
+          <gestures:ConfidenceThreshold>0.5</gestures:ConfidenceThreshold>
         </Combinator>
       </Expression>
       <Expression xsi:type="rx:PublishSubject">
